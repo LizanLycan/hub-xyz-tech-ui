@@ -9,8 +9,7 @@ import DashboardLayout from "@/components/layouts/DashboardLayout";
 import TollIcon from "@mui/icons-material/Toll";
 import TokenIcon from "@mui/icons-material/Token";
 import { useState } from "react";
-import { UserTokenType } from "../components/sections/UserTokenType";
-import { UserNFTType } from "../components/sections/UserNFTType";
+import { UserTokenPanel } from "../components/ui/UserTokenPanel";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -29,7 +28,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ py: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -58,15 +57,24 @@ export default function Dashboard() {
               onChange={handleChange}
               aria-label="basic tabs example"
               centered
+              sx={{
+                "& .MuiTabs-indicator": {
+                  height: "4px !important",
+                },
+              }}
             >
               <Tab
-                sx={{ minWidth: { sm: "240px", xs: "120px" } }}
+                sx={{
+                  minWidth: { sm: "240px", xs: "120px" },
+                }}
                 icon={<TollIcon />}
                 label="Tokens"
                 {...a11yProps(0)}
               />
               <Tab
-                sx={{ minWidth: { sm: "240px", xs: "120px" } }}
+                sx={{
+                  minWidth: { sm: "240px", xs: "120px" },
+                }}
                 icon={<TokenIcon />}
                 label="NFTs"
                 {...a11yProps(1)}
@@ -74,10 +82,10 @@ export default function Dashboard() {
             </Tabs>
           </Card>
           <CustomTabPanel value={value} index={0}>
-            <UserTokenType />
+            <UserTokenPanel type={"token"} />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
-            <UserNFTType />
+            <UserTokenPanel type={"nft"} />
           </CustomTabPanel>
         </Box>
       </Container>

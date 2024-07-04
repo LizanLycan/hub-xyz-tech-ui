@@ -40,6 +40,16 @@ export default function TrackProjects() {
     },
   });
 
+  React.useEffect(() => {
+    if (state.value?.length) {
+      state.setTerm("");
+    }
+    return () => {
+      state.setTerm("");
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <TrackLayout>
       <Container maxWidth="md" sx={{ pt: 12 }}>
@@ -51,6 +61,16 @@ export default function TrackProjects() {
             options={options.data}
           />
         </Card>
+        {!state.value?.length && (
+          <Typography
+            variant="h5"
+            textAlign={"center"}
+            sx={{ mt: 8 }}
+            color={"GrayText"}
+          >
+            No selected tokens
+          </Typography>
+        )}
         <ListSelectedTokens
           tokens={state.value ?? []}
           onCheckedBookmark={(checked, index) => {
@@ -99,9 +119,12 @@ export default function TrackProjects() {
                 addTokensToUser.mutate(
                   state.value.map((token) => ({
                     address: token.address,
-                    tokenId: Number(token.tokenId),
+                    tokenId: token.tokenId.toString(),
                     bookmarked: !!token.bookmarked,
                     type: token.type,
+                    name: token.name,
+                    symbol: token.symbol,
+                    logo: token.logo ?? "",
                   }))
                 );
               }}

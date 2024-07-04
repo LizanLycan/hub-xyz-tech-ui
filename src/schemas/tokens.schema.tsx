@@ -11,7 +11,7 @@ export const TokenSchema = z.object({
   updatedAt: z.string(),
   bookmarked: z.boolean(),
   userId: z.string(),
-  tokenId: z.number(),
+  tokenId: z.string(),
   type: TokenType,
 });
 export const UserToken = TokenSchema.extend({
@@ -25,17 +25,12 @@ export const TokenFromExplorer = z.object({
   name: z.string(),
   symbol: z.string(),
   logo: z.string().optional(),
-  tokenId: z.number(),
+  tokenId: z.string(),
   type: TokenType,
   bookmarked: z.boolean().optional(),
 });
 export const OptionsTokenFromExplorer = z.array(TokenFromExplorer);
-export const AddTokenBodySchema = TokenSchema.omit({
-  id: true,
-  createdAt: true,
-  updatedAt: true,
-  userId: true,
-});
+export const AddTokenBodySchema = TokenFromExplorer;
 
 export type TokenSchema = z.infer<typeof TokenSchema>;
 export type UserToken = z.infer<typeof UserToken>;

@@ -16,7 +16,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import TollIcon from "@mui/icons-material/Toll";
 import TokenIcon from "@mui/icons-material/Token";
 
-export const SelectedProjectCard = ({
+export const SelectedTokenCard = ({
   token,
   onCheckedBookmark,
   onDelete,
@@ -53,13 +53,12 @@ export const SelectedProjectCard = ({
           gap: 2,
           justifyContent: "right",
           alignItems: "center",
-          flexWrap: "wrap",
-          minWidth: 200,
         }}
       >
         <FormControl>
           <RadioGroup name="radio-buttons-group">
             <FormControlLabel
+              sx={{ overflow: "hidden" }}
               checked={checked}
               value="bookmarked"
               control={
@@ -72,7 +71,11 @@ export const SelectedProjectCard = ({
                   }
                 />
               }
-              label="Bookmark"
+              label={
+                <Typography variant="caption" noWrap>
+                  Bookmark
+                </Typography>
+              }
             />
           </RadioGroup>
         </FormControl>

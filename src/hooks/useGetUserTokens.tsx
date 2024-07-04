@@ -9,8 +9,8 @@ export const useGetUserTokens = (type: TokenType) => {
   const { data } = useSession();
 
   return useQuery({
-    queryKey: ["getUserNFTType", data?.user.id],
-    enabled: !!chainId && !!data?.user.id,
+    queryKey: ["useGetUserTokens", data?.user.id, type],
+    enabled: !!chainId && !!data?.user.id && !!type,
     queryFn: async () => {
       const response = await fetch(
         `${API_URL}/token/getUserTokens?${new URLSearchParams({
