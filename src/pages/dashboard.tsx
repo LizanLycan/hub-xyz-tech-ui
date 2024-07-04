@@ -2,7 +2,7 @@
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { getSession, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { Card, Container } from "@mui/material";
 import { type NextPageContext } from "next";
 import DashboardLayout from "@/components/layouts/DashboardLayout";
