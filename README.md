@@ -1,19 +1,28 @@
-# Create T3 App
+_Powered by [T3](https://t3.gg)_
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+# HUB XZY Tech Challenge - Frontend
 
-## What's next? How do I make an app with this?
+This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app` to build the front end for the HUB XZY Tech Challenge. The backend for this project can be found [here](https://github.com/LizanLycan/hub-xyz-tech-backend)
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Installation
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+To get started, run the following commands:
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+```bash
+yarn install
+```
+
+## Environment Variables
+
+Fill in the `.env` file with the following variables to run locally:
+
+```bash
+# This should be the same as the backend env variable
+NEXTAUTH_SECRET="make_it_secret_make_it_safe"
+NEXTAUTH_URL="http://localhost:3000"
+
+NEXT_PUBLIC_API_URL="http://localhost:8000"
+```
 
 ## Learn More
 
